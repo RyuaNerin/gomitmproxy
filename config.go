@@ -1,6 +1,7 @@
 package gomitmproxy
 
 import (
+	"context"
 	"crypto/tls"
 	"net"
 	"net/http"
@@ -83,4 +84,6 @@ type Config struct {
 	// OnError is called if there's an issue with retrieving the response from
 	// the remote server.
 	OnError OnErrorFunc
+
+	DialContext func(ctx context.Context, network, address string) (net.Conn, error)
 }
